@@ -43,6 +43,9 @@ def variables():
     print("Y podemos ver obtener el tipo de una variable")
     print(var6) #<class 'float'>
 
+    #tambien tenemos para comprobar si son instacias de tipos
+    print(isinstance(var1,str))
+
 def variables2():
     print ("Las varibles son case-sensitive")
     var = 23
@@ -162,8 +165,22 @@ def formatoCadenas():
     #tambien podemos hacer mates directamente
     mates = f"La suma de 3+4 es {4+3}"
 
+def booleanos():
+    print("En python para comparar booleanos en vez de && o || como en java usamos and or y not")
 
 
+
+def listas():
+    lista1 = [1,2,3,4]
+    lista2 = list((1,2,3,4))
+    #si no usamos el constructor declaramos con  [] si no con ()
+
+    #añadir elementos a la lista dos formas
+    lista1.append(6)    #añade al final el elemento
+    lista2.insert(2,78) #añade en un indice desplazando el resto
+    print(lista2)
+
+    lista1.extend(lista2) #añadimos al final de lista1 la lista2
 
 """
 Text Type:	str
@@ -193,5 +210,7 @@ def main():
     rand()
     cadenas()
     mayusculas()
+    booleanos()
+    listas()
 
 main()
