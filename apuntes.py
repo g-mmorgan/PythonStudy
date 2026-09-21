@@ -1,4 +1,4 @@
-
+import random
 def comenatarios():
     print("#Los comentarios van con # no //)")
     print("Podemo comentar con \"\"\" ")
@@ -80,8 +80,90 @@ def vGlobal3():
 
 def dataTypes():
     print("Las variables pueden contener datos de diferente tipo")
-    print("de texto, numericas, listas, mapas, boolean, binarios, y NoneType")
+    print("De texto, numericas, listas, mapas, boolean, binarios, y NoneType")
     print("Podemos usar \"type(x)\" ")
+
+def complejos():
+    print("Los numero complejos usan j como la parte imaginaria")
+    x = 5j
+    y = 3+6j
+    z= -5j
+    print(type(x),y,z)
+
+def numericos():
+    print("Podemos cambiar el tipo de una variable numerica con un cast")
+    x = 1    # int
+    y = 2.8  # float
+    z = 1j   # complex
+
+    #convert from int to float:
+    a = float(x)
+
+    #convert from float to int:
+    b = int(y)
+
+    #convert from int to complex:
+    c = complex(x)
+
+    print(type(a))
+    print(type(b))
+    print(type(c))
+
+
+def rand():
+    print("Pyhton no tiene una funcion random pero si podemos importar el modulo random" \
+        "y generar un numero")
+    print(random.randrange(1,10))
+
+
+def cadenas():
+    print("Podemos usar 'comilla simple' dentro de comillas doble")
+    a = """
+        string de varias lineas
+        se puede hacer asi"""
+    print("Usamos len para calculr tamaño de string",len(a))
+    #también podemos comprobar si una palabra esta dentro del string
+    txt = "Hola qué tal estas amigo?"
+    b = bool("Hola" in txt) #b = true
+    print(b)
+    #comprobamos si no esta
+    b = "Adios" not in txt
+    print(b)
+    c = "Hola Mundo"
+    print("Imprimimos un rango dentro de un string '",c[2:6],"'")
+    #no se incluye la ultima posicion 
+    #podemos poner de principio hasta una pos o de pos a final
+        # print(c[:5]) o print(c[5:])
+
+    #podemos hacer indexacion negativa
+    # H O L A Q U E T A  L
+    #-x              -2 -1
+    #sirve para imprimir el final si no sabemos la longitud del string
+
+def mayusculas():
+    print("Podemos cambiar texto a lowe o upper case")
+    a = "Hola mundo"
+    print(a.upper())
+    print(a.lower())
+    #luego tenemos el a.strip() que quita cualquier espacios del principio o el final
+
+    #podemos sustituir strings a.replace("H","J")
+    #separador print(a.split("a")) divide por
+
+def formatoCadenas():
+    #podemos 
+    edad = 22
+    txt = "Hola mi edad es "+ edad
+    #eso es una forma o podemos
+    txt2 = f"Hola mi edad es {edad}"
+
+    pi = 3.141592
+    txtpi = f"Pi es {pi:.2f} con dos decimales"
+    #tambien podemos hacer mates directamente
+    mates = f"La suma de 3+4 es {4+3}"
+
+
+
 
 """
 Text Type:	str
@@ -106,5 +188,10 @@ def main():
     vGlobal2()
     vGlobal3()
     dataTypes()
+    complejos()
+    numericos()
+    rand()
+    cadenas()
+    mayusculas()
 
 main()
