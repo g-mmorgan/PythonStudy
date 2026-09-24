@@ -3,12 +3,12 @@ def comenatarios():
     print("#Los comentarios van con # no //)")
     print("Podemo comentar con \"\"\" ")
 
-"""
- Esto técnicamente no es un comentario
- Es un string pero como no esta dentro de una variable
- Pues python lo ignora
- Y se usa como comentarios de varias lineas
- """
+    """
+    Esto técnicamente no es un comentario
+    Es un string pero como no esta dentro de una variable
+    Pues python lo ignora
+    Y se usa como comentarios de varias lineas
+    """
 
 print ("Hola mundo")
 
