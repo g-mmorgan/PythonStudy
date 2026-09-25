@@ -10,7 +10,7 @@ def comenatarios():
     Y se usa como comentarios de varias lineas
     """
 
-print ("Hola mundo")
+print ("Hola mundo!\n")
 
 #Los comentarios van con # no //
 def indentacion():
@@ -171,31 +171,142 @@ def booleanos():
 
 
 def listas():
-    lista1 = [1,2,3,4]
-    lista2 = list((1,2,3,4))
-    #si no usamos el constructor declaramos con  [] si no con ()
+    #como modificar listas
+    #append añade un elemento nuevo al final
+    list1 = [1,"adios",4.7987, "hola"]
+    list1.append("nuevo")
+    
 
-    #añadir elementos a la lista dos formas
-    lista1.append(6)    #añade al final el elemento
-    lista2.insert(2,78) #añade en un indice desplazando el resto
+    print(list1)#[1, 'adios', 4.7987, 'hola', 'nuevo']
+    #podemos insertar en una posicion concreta no elimina elementos se mete en medio
+    list1.insert(1,"hasta luego")
+    print(list1) #[1, 'hasta luego', 'adios', 4.7987, 'hola', 'nuevo']
+
+
+    list2 = ["nueva lista", "final"]
+    #añade variables o listas o tuplas al final de la lista
+    list1.extend(list2)
+    print(list1)#[1, 'hasta luego', 'adios', 4.7987, 'hola', 'nuevo', 'nueva lista', 'final']
+
+
+    #podemos borrar elementos de la lista
+    list1.remove(1)
+    print(list1)#['hasta luego', 'adios', 4.7987, 'hola', 'nuevo', 'nueva lista', 'final']
+
+
+    #podemos borrar por indice
+    list1.pop(3)# indice 3 hola
+    print(list1)#['hasta luego', 'adios', 4.7987, 'nuevo', 'nueva lista', 'final']
+
+
+    list1.pop()#borramos ultimo elemento 
+    print(list1)#['hasta luego', 'adios', 4.7987, 'nuevo', 'nueva lista']
+
+
+    del list2 # borramos toda la lista sirve para todas las variables
+    """print(list2)""" #error 
+
+    #tambien podemos vaciar sin borrar la variable
+    list1.clear() #no se olviden los parentesis
+    print("Lista1:", list1) 
+
+    #podemos copiar listas
+    #lista4 = lista1 NO SIRVE
+    #lo que esta haciendo es igualar punteros lo que le pase a lista1 le afecta a lista4
+    fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+    lista4 = fruits.copy()
+        #otra formas    lista4=list(fruits)
+        #               lista4=fruits[:]
+    fruits.pop(0)
+    print(lista4) #no se ha borrado apple 
+
+def bucleEnListas():
+    lista1 = [0,2,4,6,8,10]
+    lista2=["a","b","c","d","e"]
+    lista3=[1,"a",2,"b",3,"c"]
+
+    #LA FORMA MAS SENCILLA
+    for x in lista1:
+        print(x)
+    print("\n")
+    #PODEMOS USAR UN RANGO Y LA LONGITUD DE LISTA
+    for i in range(len(lista2)):
+        print(lista2[i])
+    print("\n")
+    #USANDO BUCLE WHILE
+    j = 0
+    while j < len(lista3):
+        print(lista3[j])
+        j += 1
+    print("\n")
+    
+    #Bucle con comprension de lista
+    primos=[2,3,5,7,11,13,17]
+    [print(x) for x in primos]
+
+    #RANGE  
+
+    """
+        range() en Python genera una secuencia inmutable de números y se usa comúnmente en bucles for. Acepta hasta 3 parámetros:
+        1. range(stop): genera de 0 hasta stop-1
+        range(5)  # 0, 1, 2, 3, 4
+        2. range(inicio, stop): genera de inicio hasta stop-1
+        range(2, 6)  # 2, 3, 4, 5
+        3. range(inicio, stop, paso): igual al anterior pero con un salto (paso)
+        range(0, 10, 2)  # 0, 2, 4, 6, 8
+    """
+
+def comprensionDeLista():
+    #sirve para crear nuevas listas a base de otras ya existentes
+    fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+    lista2 = [x for x in fruits if "a" in x]
     print(lista2)
 
-    lista1.extend(lista2) #añadimos al final de lista1 la lista2
+    #SYNTAXIS
+    """
+    newlist = [expression for item in iterable if condition == True]
+    
+    ej:
+    newlist = [x for x in range(10)]
+    newlist = [x for x in fruits]
+    newlist = [x.upper() for x in fruits]
+    newlist = ['hello' for x in fruits]
+    newlist = [x if x != "banana" else "orange" for x in fruits]ç
 
-"""
-Text Type:	str
-Numeric Types:	int, float, complex
-Sequence Types:	list, tuple, range
-Mapping Type:	dict
-Set Types:	set, frozenset
-Boolean Type:	bool
-Binary Types:	bytes, bytearray, memoryview
-None Type:	NoneType
-"""
+    """
+    
+def ordenarLista():
+    lista1 = [3,43534,1,-76,7,73926780348,-12,21,56,63]
+    lista2=["e","c","d","a","b",]
+    lista3=[3,"c",1,"b","a",2]
+
+    #sort a secas ordena de forma alfabetica y de menor a mayor
+    lista1.sort()
+    print(lista1)
+
+    #sort con reverse= true ordena de la Z a A y de mayor a menor
+    lista2.sort(reverse = True)
+    print(lista2)
+
+    #lista3.sort() no se puede ordenar listas mixtas
+
+    #ordenar usando un criterio concreto
+    def myfunc(n):
+        return abs(n - 50)#abs es valor absoluto -7 = 7 y 6 = 6
+
+    thislist = [100, 50, 65, 82, 23]
+    thislist.sort(key = myfunc)
+    print(thislist)
+
+    #podemos darle la vuelta a una lista
+    lista3.reverse()
+    print(lista3)
+    
 
 
 
 def main():
+    """
     comenatarios()
     indentacion()
     variables()
@@ -212,7 +323,12 @@ def main():
     mayusculas()
     booleanos()
     listas()
-
-#Vale vamos a testear esto
+    bucleEnListas()
+    comprensionDeLista()
+    ordenarLista()
+    """
+    
+    
+    
 
 main()
