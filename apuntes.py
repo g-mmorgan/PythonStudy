@@ -1,7 +1,25 @@
 import random
+print ("Hola mundo!\n")
+
+def printFun():
+    
+    print("En python es muy importante la indentacion")
+
+    print("Print es una sentencia"); print('Puedes apilar sentencias así y con comillas simples el str')
+
+    print("Puedes separar el string " \
+    "en lineas distintas")
+
+    print("Toda esta frase",end=" "); print("está en diferentes print pero misma linea")
+
+    print("Podemos imprimir muchas cosas en un mismo print, numeros:", 40, "sumas:", 3+4)
+
+    print("También podemos" + "\nusar salto de línea")
+
 def comenatarios():
+
     print("#Los comentarios van con # no //)")
-    print("Podemo comentar con \"\"\" ")
+    print("Los comentarios multilinea no son con /* son con \"\"\" al principio y al final")
 
     """
     Esto técnicamente no es un comentario
@@ -10,167 +28,191 @@ def comenatarios():
     Y se usa como comentarios de varias lineas
     """
 
-print ("Hola mundo!\n")
-
-#Los comentarios van con # no //
-def indentacion():
-    if 2>1:
-        print("En python es muy importante la indentacion")
-
-        print("Print es una sentencia"); print('Puedes apilar sentencias así, también usar comilla simple')
-
-        print("Toda esta frase",end=" "); print("está en diferentes print pero misma linea")
-
-        print("Podemos imprimir numeros", 4092380, "\nY sumas", 3+4)
-
 
 def variables():
-
-    print("Podemos declarar variables sin tipos")
-
-    var1 = "Hola"
-    var2  = 33
-
-    print(var1,var2)
-    #Tambien podemos asignarles un tipo mediante casting
-
-    var3 = str(3)       # "3"
-    var4= int(3)        # 3
-    var5 = float(3)     # 3.0
+    #DECLARACIÓN E INICIALIZACIÓN
     
+    #podemos declarar sin indicar el tipo
+    print("Podemos declarar sin indicar el tipo")
+    var1 = "Hola"   #python asume str
+    var2  = 33      #int
+
+    #podemos declarar e inicializar varias a la vez y al mismo valor
+    i1 = i2 = i3 = 2
+    print("Podemos declarar e inicializar varias a la vez y al mismo valor",i1,i2,i3)
+
+    #Las variables son case sensitive
+    print("Las variables son case sensitive")
+    var = 23
+    Var = 22    #var != Var
+
+    #Tambien podemos asignarles un tipo mediante casting
+    var3 = str(3)       # "3"
+    var4 = float(3)     # 3.0
+
+    #TIPOS
+    x = str("Hello")    #string
+    y= int(22)          #entero
+    z= float(1e-9)      #float
+    b= bool(True)       #booleano
+    c= complex(4j)      #complejo
+    
+
     #Podemos obtener el tipo de variable que es
-    var6 = type(var5)
-    print("Y podemos ver obtener el tipo de una variable")
-    print(var6) #<class 'float'>
+    print("Y podemos ver obtener el tipo de una variable con type(var)")
+    print(type(z)) #<class 'float'>
 
     #tambien tenemos para comprobar si son instacias de tipos
-    print(isinstance(var1,str))
-
-def variables2():
-    print ("Las varibles son case-sensitive")
-    var = 23
-    Var = 22
-    print(var,Var)
-
-
-def variables3():
-    i1 = i2 = i3 = 2
-    print("Podemos declarar e incializar variables a la vez y al mismo valor",i1,i2,i3)
-
-    print("Podemos declarar e incializar tres variables a los elementos de una lista")
-    lista = [1,2,3]
-    l1,l2,l3 = lista
-    print(l1,l2,l3); print(lista)
+    print("Podemos saber si son instancias de tipos con isinstance(var,tipo)")
+    print(isinstance(var1,str)) #True
 
 
 #VARIABLES GLOBALES
 x = "Hola soy una variable global"
+y = "Variable global sin modificar"
 #si estan definidas fuera de una funcion son globales
 
-def vGlobal1():
-    print("Primera funcion usando una variable global", x)
-
-
-def vGlobal2():
-    var1 = "Se puede crear variables locales a función con nombres de otra variables"
-    print(var1)
-
-def vGlobal3():
+def varGlobal():
+    
+    x = "Variable local"
+    print("Se pueden crear variables locales a función con nombres de otra variables", x)
     print("También podemos modificar variables globales desde funcion si usamos global")
-    global x
-    x = "Nueva variable x"
-    print(x)
+    global y
+    y = "Nueva variable y"
+    print(y)
 
-def dataTypes():
-    print("Las variables pueden contener datos de diferente tipo")
-    print("De texto, numericas, listas, mapas, boolean, binarios, y NoneType")
-    print("Podemos usar \"type(x)\" ")
+def varNumericas():
 
-def complejos():
     print("Los numero complejos usan j como la parte imaginaria")
     x = 5j
     y = 3+6j
     z= -5j
+
     print(type(x),y,z)
 
-def numericos():
     print("Podemos cambiar el tipo de una variable numerica con un cast")
-    x = 1    # int
-    y = 2.8  # float
-    z = 1j   # complex
+    e = 1    # int
+    f = 2.8  # float
 
     #convert from int to float:
-    a = float(x)
+    a = float(e)
 
     #convert from float to int:
-    b = int(y)
+    b = int(f)
 
     #convert from int to complex:
-    c = complex(x)
+    c = complex(e)
 
-    print(type(a))
-    print(type(b))
-    print(type(c))
+    print(a,type(a))
+    print(b,type(b))
+    print(c,type(c))
 
 
-def rand():
-    print("Pyhton no tiene una funcion random pero si podemos importar el modulo random" \
-        "y generar un numero")
+def numRandom():
+    print("Pyhton no tiene una funcion random " \
+    " pero podemos importar el modulo random")
+    #arribla import random
     print(random.randrange(1,10))
 
 
 def cadenas():
-    print("Podemos usar 'comilla simple' dentro de comillas doble")
-    a = """
-        string de varias lineas
-        se puede hacer asi"""
-    print("Usamos len para calculr tamaño de string",len(a))
-    #también podemos comprobar si una palabra esta dentro del string
+    #DECLARACIÓN E INICIALIZACION
     txt = "Hola qué tal estas amigo?"
-    b = bool("Hola" in txt) #b = true
-    print(b)
+    a = """
+            String de varias lineas
+            se puede hacer asi
+        """
+        
+
+    print("\"Podemos usar 'comilla simple' dentro de comillas doble\"")
+    
+    print("Usamos len para calcular tamaño de string:",len(a))
+
+    #también podemos comprobar si una palabra esta dentro del string
+    print("Comprobamos si hola esta en txt con: '\"Hola\" in txt':")
+    print("Hola" in txt)
+
     #comprobamos si no esta
-    b = "Adios" not in txt
-    print(b)
-    c = "Hola Mundo"
-    print("Imprimimos un rango dentro de un string '",c[2:6],"'")
+    print("'not in' para comprobar si no esta en la cadena:")
+    print("Adios" not in txt)
+
+    #RANGOS DENTRO DE STRING
+    b = "Hola Mundo"
+    print("Imprimimos un rango dentro de un string: '",b[2:6],"'")
+
     #no se incluye la ultima posicion 
     #podemos poner de principio hasta una pos o de pos a final
-        # print(c[:5]) o print(c[5:])
+        # print(b[:5]) o print(b[5:])
 
     #podemos hacer indexacion negativa
     # H O L A Q U E T A  L
     #-x              -2 -1
     #sirve para imprimir el final si no sabemos la longitud del string
+    print("Indexación negativa: '",b[-3:],"'")
 
-def mayusculas():
-    print("Podemos cambiar texto a lowe o upper case")
+    print("Podemos cambiar texto a lower o upper case")
     a = "Hola mundo"
     print(a.upper())
     print(a.lower())
-    #luego tenemos el a.strip() que quita cualquier espacios del principio o el final
+    a = "       Hola Mundo       "
+    print("'strip()' borra espacios del principio y final:",a,"pasa a:",a.strip())
 
-    #podemos sustituir strings a.replace("H","J")
-    #separador print(a.split("a")) divide por
+    print("'replace()' para sustituir dentro de strings")
+    a = "A B C D E F G"
+    a= a.replace("A","Z")
+    print(a)
+    a = "28-09-2026"
+    print("'a.split('-')', se usa para dividir desde un char concreto")
+    print(a,a.split('-'))
+    print("Tambien podemos limitar los split", a.split('-',1))
 
-def formatoCadenas():
-    #podemos 
+
+def formatoStr():
+    print("Para concatenar str con int de forma sencilla existe el string con formato")
     edad = 22
-    txt = "Hola mi edad es "+ edad
-    #eso es una forma o podemos
-    txt2 = f"Hola mi edad es {edad}"
+    print(f"Hola mi edad es {edad}")
 
     pi = 3.141592
-    txtpi = f"Pi es {pi:.2f} con dos decimales"
+    txt = f"Tengo {edad} años y Pi es {pi:.2f}"
+    print(txt)
     #tambien podemos hacer mates directamente
     mates = f"La suma de 3+4 es {4+3}"
+    print(mates)
 
 def booleanos():
-    print("En python para comparar booleanos en vez de && o || como en java usamos and or y not")
+    #DECLARACIÓN E INICIALIZACIÓN
+    a = True
+    b = False
+
+    print("En python los booleanos empiezan con mayúsucla: True, False")
 
 
+    d = 1
+    c = 9
+    print("En python para comparar booleanos en vez de && o || como en java usamos and y or")
+    print("True and True =", a and a)
+    print("False or False =", b or b)
+
+    print("Podemos evaulauar cualquier variable con bool(var)")
+
+    #TODAS LAS VARIABLES DEVUELVEN 1
+        #excepto:
+        #bool(False)
+        #bool(None)
+        #bool(0)
+        #bool("")
+        #bool(())
+        #bool([])
+        #bool({})
+    
 
 def listas():
+
+    #DECLARACION E INICIALIZACION
+    lista = [1,2,3,"hola",4.5, 5,6]     #normal
+    lista2 = list(["a","b","c","d"])    #constructor list()
+    lista3 = list((1,2,3,4,5))
+
     #como modificar listas
     #append añade un elemento nuevo al final
     list1 = [1,"adios",4.7987, "hola"]
@@ -301,33 +343,37 @@ def ordenarLista():
     #podemos darle la vuelta a una lista
     lista3.reverse()
     print(lista3)
+
+def tuplas():
+    #DECLARACION E INICIALIZACIÓN
+    tupla= ("hola","esto","es","una","tupla")
+    tupla2= "esto", "tambien", "es", "una", "tupla"
+        #Las tuplas son:
+            #ORDENADAS
+            #NO MODIFICABLES,   no se pueden borrar, añadir o mover elementos
+    print(tupla)
     
 
 
 
 def main():
-    """
-    comenatarios()
-    indentacion()
-    variables()
-    variables2()
-    variables3()
-    vGlobal1()
-    vGlobal2()
-    vGlobal3()
-    dataTypes()
-    complejos()
-    numericos()
-    rand()
-    cadenas()
-    mayusculas()
-    booleanos()
-    listas()
-    bucleEnListas()
-    comprensionDeLista()
-    ordenarLista()
-    """
+
+    print("Main:\n")
+    #printFun()
+    #comenatarios()
+    #variables()
+    #varGlobal()
+    #varNumericas()
+    #numRandom()
+    #cadenas()
+    #formatoStr()
+    #booleanos()
+    #listas()
+    #bucleEnListas()
+    #comprensionDeLista()
+    #ordenarLista()
     
+
     
     
 
