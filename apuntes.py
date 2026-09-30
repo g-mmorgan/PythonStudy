@@ -185,6 +185,8 @@ def booleanos():
     b = False
 
     print("En python los booleanos empiezan con mayúsucla: True, False")
+    print("True y 1 son lo mismo al igual que False y 0")
+
 
 
     d = 1
@@ -204,65 +206,68 @@ def booleanos():
         #bool(())
         #bool([])
         #bool({})
+
+def losArrays():
+    print("Los arrays se usan para conteners varios valores en una sola variable")
+
+    coche = ["volvo","audio","seat","bmw","mercedes"]
+
+    print("Se puede acceder a ellos mediante llaves [0]")
+
+    print("De la estructura array salen otros tipos de variables que son: listas, tuplas, sets, dictionaries")
+    print("Metodos array:"
+    "\nmiArray.append(elemento)   añade elemento al final"
+    "\nmiArray.clear()            vacia el array"
+    "\nx = miArray.copy()         devuelve una copia del array"
+    "\nmiArray.count(elemento)    cuenta cuantas instancias de ese elemento existen en el array"
+    "\nmiArray.index(elemento)    devuelve el indice si no esta salta fallo"
+    "\nmiArray.extend(otrlista)   añade los elementos de una lista o iterable al final"
+    "\nmiArray.insert(i,elemento) añade un elemento en la posicion i"
+    "\nmiArray.pop(i)             borra el elemento en la posicion i"
+    "\nmiArray.pop                borra el último elemento osea indice mayor"    
+    "\nmiArray.remove(elemento)   borra elemento del lista si no esta salta error"
+    "\nmiArray.reverse()          invierte el orden de la array"
+    "\nmiArray.sort()             ordena de mayor a menor o alfabeticamente")
+
+
+
     
 
 def listas():
 
     #DECLARACION E INICIALIZACION
-    lista = [1,2,3,"hola",4.5, 5,6]     #normal
-    lista2 = list(["a","b","c","d"])    #constructor list()
-    lista3 = list((1,2,3,4,5))
-
-    #como modificar listas
-    #append añade un elemento nuevo al final
-    list1 = [1,"adios",4.7987, "hola"]
-    list1.append("nuevo")
-    
-
-    print(list1)#[1, 'adios', 4.7987, 'hola', 'nuevo']
-    #podemos insertar en una posicion concreta no elimina elementos se mete en medio
-    list1.insert(1,"hasta luego")
-    print(list1) #[1, 'hasta luego', 'adios', 4.7987, 'hola', 'nuevo']
+    lista = [1,2,3,"hola",4.5,5,6]     #normal
+    lista2 = list(["adios","barco","casa","dado","perro","suelo"])    #constructor list() tambien con () en vez de []
+    lista3 =list ("hola")               #desde string -> ['h','o','l','a']
+    lista4 = list(range(5))             #desde rango ->[1,2,3,4,5]
+    lista5 = [x for x in lista2 if "a" in x]    #comprension de lista, construimos a partir de otra
+    lista6= lista.copy()                #mediante copia (no son el mismo objeto)
+    lista7 = list(lista6)               #con constructor (no son el mismo objeto)
+    lista8 = list(lista7[3:])           #con indice de otra lista
 
 
-    list2 = ["nueva lista", "final"]
-    #añade variables o listas o tuplas al final de la lista
-    list1.extend(list2)
-    print(list1)#[1, 'hasta luego', 'adios', 4.7987, 'hola', 'nuevo', 'nueva lista', 'final']
+    #Las listas son ORDENADAS, MODIFICABLES, PERMITEN DUPLICADOS, SON INDEXADAS
+
+    #METODOS lista
+    print("Metodos para Listas:"
+    "\nmiLista.append(elemento)   añade elemento al final"
+    "\nmiLista.clear()            vacia la lista"
+    "\nx = miLista.copy()         devuelve una copia del lista"
+    "\nmiLista.count(elemento)    cuenta cuantas instancias de ese elemento existen en la lista"
+    "\nmiLista.index(elemento)    devuelve el indice si no esta salta fallo"
+    "\nmiLista.extend(otrlista)   añade los elementos de una lista o iterable al final"
+    "\nmiLista.insert(i,elemento) añade un elemento en la posicion i"
+    "\nmiLista.pop(i)             borra el elemento en la posicion i"
+    "\nmiLista.pop                borra el último elemento osea indice mayor" 
+    "\nmiLista.remove(elemento)   borra elemento del lista"
+    "\nmiLista.reverse()          invierte el orden de la lista"
+    "\nmiLista.sort()             ordena de mayor a menor o alfabeticamente")
 
 
-    #podemos borrar elementos de la lista
-    list1.remove(1)
-    print(list1)#['hasta luego', 'adios', 4.7987, 'hola', 'nuevo', 'nueva lista', 'final']
 
-
-    #podemos borrar por indice
-    list1.pop(3)# indice 3 hola
-    print(list1)#['hasta luego', 'adios', 4.7987, 'nuevo', 'nueva lista', 'final']
-
-
-    list1.pop()#borramos ultimo elemento 
-    print(list1)#['hasta luego', 'adios', 4.7987, 'nuevo', 'nueva lista']
-
-
-    del list2 # borramos toda la lista sirve para todas las variables
-    """print(list2)""" #error 
-
-    #tambien podemos vaciar sin borrar la variable
-    list1.clear() #no se olviden los parentesis
-    print("Lista1:", list1) 
-
-    #podemos copiar listas
-    #lista4 = lista1 NO SIRVE
-    #lo que esta haciendo es igualar punteros lo que le pase a lista1 le afecta a lista4
-    fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
-    lista4 = fruits.copy()
-        #otra formas    lista4=list(fruits)
-        #               lista4=fruits[:]
-    fruits.pop(0)
-    print(lista4) #no se ha borrado apple 
 
 def bucleEnListas():
+    #RECORRER UNA LISTA USANDO BUCLES
     lista1 = [0,2,4,6,8,10]
     lista2=["a","b","c","d","e"]
     lista3=[1,"a",2,"b",3,"c"]
@@ -271,10 +276,12 @@ def bucleEnListas():
     for x in lista1:
         print(x)
     print("\n")
+
     #PODEMOS USAR UN RANGO Y LA LONGITUD DE LISTA
     for i in range(len(lista2)):
         print(lista2[i])
     print("\n")
+
     #USANDO BUCLE WHILE
     j = 0
     while j < len(lista3):
@@ -286,36 +293,6 @@ def bucleEnListas():
     primos=[2,3,5,7,11,13,17]
     [print(x) for x in primos]
 
-    #RANGE  
-
-    """
-        range() en Python genera una secuencia inmutable de números y se usa comúnmente en bucles for. Acepta hasta 3 parámetros:
-        1. range(stop): genera de 0 hasta stop-1
-        range(5)  # 0, 1, 2, 3, 4
-        2. range(inicio, stop): genera de inicio hasta stop-1
-        range(2, 6)  # 2, 3, 4, 5
-        3. range(inicio, stop, paso): igual al anterior pero con un salto (paso)
-        range(0, 10, 2)  # 0, 2, 4, 6, 8
-    """
-
-def comprensionDeLista():
-    #sirve para crear nuevas listas a base de otras ya existentes
-    fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
-    lista2 = [x for x in fruits if "a" in x]
-    print(lista2)
-
-    #SYNTAXIS
-    """
-    newlist = [expression for item in iterable if condition == True]
-    
-    ej:
-    newlist = [x for x in range(10)]
-    newlist = [x for x in fruits]
-    newlist = [x.upper() for x in fruits]
-    newlist = ['hello' for x in fruits]
-    newlist = [x if x != "banana" else "orange" for x in fruits]ç
-
-    """
     
 def ordenarLista():
     lista1 = [3,43534,1,-76,7,73926780348,-12,21,56,63]
@@ -323,10 +300,12 @@ def ordenarLista():
     lista3=[3,"c",1,"b","a",2]
 
     #sort a secas ordena de forma alfabetica y de menor a mayor
-    lista1.sort()
+    print("Ordenamos con sort(), se ordena de mayor a menor o alfabeticamente")
+    lista1.sort() # solo podemos sort con listas que tengan todos los elementos mismo tipo todo int o todo str
     print(lista1)
 
     #sort con reverse= true ordena de la Z a A y de mayor a menor
+    print("Si ponemos en sort(reverse=true) se ordena al rever de mayor a menor y de Z a A")
     lista2.sort(reverse = True)
     print(lista2)
 
@@ -346,15 +325,83 @@ def ordenarLista():
 
 def tuplas():
     #DECLARACION E INICIALIZACIÓN
-    tupla= ("hola","esto","es","una","tupla")
-    tupla2= "esto", "tambien", "es", "una", "tupla"
-        #Las tuplas son:
-            #ORDENADAS
-            #NO MODIFICABLES,   no se pueden borrar, añadir o mover elementos
+    tupla= ("hola","esto","es","una","tupla")   #la formas mas común
+    tupla2= "esto", "tambien", "es", "una", "tupla" #sin parentesis se puede
+    tupla3 = (1,)   #un solo elemento
+    tupla4=tuple([1,2,3,4,5])   #constrcutor tuple con lista
+    tupla5=tuple("abcdef")      #contructor con string
+    tupla6= tuple(range(5))     #con rango
+
+
+    #Las tuplas son:
+        #ORDENADAS, NO MODIFICABLES, SI DUPLICADOS, INDEXADAS
     print(tupla)
+
+    #acceso a tuplas
+    print("Se accede a tupla igual que a listas tupla[1], tupla[2:4], tupla[-1], tupla[:3]")
+
+    print("se puede comprobar si contiene elementos con in: \"hola\" in tupla")
+    print("hola" in tupla) #True
+
+    print("Las tuplas como tal son inmutables pero si queremos modificarlas las hacemos listas modificamos y las volvemos a hacer tuplas")
+    x = ("apple", "banana", "cherry")
+    y = list(x)
+    y[1] = "kiwi"
+    x = tuple(y)
+
+    print(x)
+
+    print("Tambien podemos sumar tuplas de tal forma que se añaden elementos")
+
+    z=tuple(range(5))
+    w= ("naranja",)
+    z +=w
+    print(z)
+
+    print("Podemos desempaquetar tuplas cada elemento de la tupla lo extraemos a una variable")
+
+    t=tuple("abc")
+    (a,b,c) = t
+    print(f"Tupla:{t}, t[1]:{a} t[2]:{b} t[3]:{c}")
+
+    print("Si tenemos menos variables que elementos con * la última variable se convierte en lista con el resto")
+    t1=tuple(range(10))
+    (n,n1,n2,*m)=t1
+    print("t1=tuple(range(10))")
+    print(f"n:{n} n1:{n1} n2:{n2} m:{m}")
+
+    print("Podemos duplicar tuplas")
+    t3=tuple("abcd")
+    t4 = t3 * 3
+    print(t4) #('a', 'b', 'c', 'd', 'a', 'b', 'c', 'd', 'a', 'b', 'c', 'd')
+
+    #METODOS
+        #METODOS lista
+    print("Metodos para Tuplas:"
+    "\nmiTupla.count(elemento)    cuenta cuantas instancias de ese elemento existen en la tupla"
+    "\nmiTupla.index(elemento)    devuelve el indice si no esta salta fallo"
+    )
+
+def losSets():
+
+    #DECLARACIÓN E INICIALIZACIÓN
+
+
+    #LOS SETS SON:
+        #DESORDENADOS, SIN DUPLICADOS, NO MODIFICABLES, NO INDEXADOS
+    miSet={"los","sets","van","con","corchetes"}    #normla con llaves
+    mi_set = set([1, 2, 3, 4])  #constructor con lista
+    mi_set = set((1, 2, 3))     #constructor con tupla
+    mi_set = set("hola")        #constructor con str
+    mi_set = set(range(5))      #constructor con range
+    mi_set = {x for x in range(10)} #por comprension
+
+    #operadores
+    mi_set = {1, 2} | {3, 4}        # {1, 2, 3, 4}
+    mi_set = {1, 2} & {2, 3}        # {2}
+    mi_set = {1, 2, 3} - {2}        # {1, 3}
+    mi_set = {1, 2} ^ {2, 3}        # {1, 3}
     
-
-
 
 def main():
 
@@ -368,13 +415,13 @@ def main():
     #cadenas()
     #formatoStr()
     #booleanos()
+    #loslistas()
     #listas()
     #bucleEnListas()
     #comprensionDeLista()
     #ordenarLista()
-    
+    #tuplas()
+    losSets()
 
     
-    
-
 main()
