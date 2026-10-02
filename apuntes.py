@@ -447,7 +447,5 @@ def main():
     #tuplas()
     losSets()
 
-    #cambio sin mas
-
     
 main()
