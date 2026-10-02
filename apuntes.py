@@ -250,18 +250,18 @@ def listas():
 
     #METODOS lista
     print("Metodos para Listas:"
-    "\nmiLista.append(elemento)   añade elemento al final"
-    "\nmiLista.clear()            vacia la lista"
-    "\nx = miLista.copy()         devuelve una copia del lista"
-    "\nmiLista.count(elemento)    cuenta cuantas instancias de ese elemento existen en la lista"
-    "\nmiLista.index(elemento)    devuelve el indice si no esta salta fallo"
-    "\nmiLista.extend(otrlista)   añade los elementos de una lista o iterable al final"
-    "\nmiLista.insert(i,elemento) añade un elemento en la posicion i"
-    "\nmiLista.pop(i)             borra el elemento en la posicion i"
-    "\nmiLista.pop                borra el último elemento osea indice mayor" 
-    "\nmiLista.remove(elemento)   borra elemento del lista"
-    "\nmiLista.reverse()          invierte el orden de la lista"
-    "\nmiLista.sort()             ordena de mayor a menor o alfabeticamente")
+    "\nmiLista.append(elemento)     añade elemento al final"
+    "\nmiLista.clear()              vacia la lista"
+    "\nx = miLista.copy()           devuelve una copia del lista"
+    "\nmiLista.count(elemento)      cuenta cuantas instancias de ese elemento existen en la lista"
+    "\nmiLista.index(elemento)      devuelve el indice si no esta salta fallo"
+    "\nmiLista.extend(otrlista)     añade los elementos de una lista o iterable al final"
+    "\nmiLista.insert(i,elemento)   añade un elemento en la posicion i"
+    "\nmiLista.pop(i)               borra el elemento en la posicion i"
+    "\nmiLista.pop                  borra el último elemento osea indice mayor" 
+    "\nmiLista.remove(elemento)     borra elemento del lista"
+    "\nmiLista.reverse()            invierte el orden de la lista"
+    "\nmiLista.sort()               ordena de mayor a menor o alfabeticamente")
 
 
 
@@ -388,18 +388,42 @@ def losSets():
 
 
     #LOS SETS SON:
-        #DESORDENADOS, SIN DUPLICADOS, NO MODIFICABLES, NO INDEXADOS
-    miSet={"los","sets","van","con","corchetes"}    #normla con llaves
-    mi_set = set([1, 2, 3, 4])  #constructor con lista
-    mi_set = set((1, 2, 3))     #constructor con tupla
-    mi_set = set("hola")        #constructor con str
-    mi_set = set(range(5))      #constructor con range
-    mi_set = {x for x in range(10)} #por comprension
+        #DESORDENADOS, SIN DUPLICADOS, MODIFICABLES, NO INDEXADOS
+    miSet={"hola","los","sets","van","con","corchetes"}    #normal con llaves
+    set1 = set([1, 2, 3, 4])  #constructor con lista
+    set2 = set((1, 2, 3))     #constructor con tupla
+    set3 = set("hola")        #constructor con str
+    set4 = set(range(5))      #constructor con range
+    set5 = {x for x in range(10)} #por comprension
 
-    #operadores
-    mi_set = {1, 2} | {3, 4}        # {1, 2, 3, 4}
-    mi_set = {1, 2} & {2, 3}        # {2}
-    mi_set = {1, 2, 3} - {2}        # {1, 3}
+ 
+    
+    print("Metodos para Sets:"
+        "\nmiSet.add(elemento)          cuenta cuantas instancias de ese elemento existen en la tupla"
+        "\nmiSet.update(elemento)       añade cualquier iterable al set"
+        "\nmiSet.remove(elemento)       borra el elemento del set"
+        "\nmiSet.discard(elemento)      borra el elemento del set pero si no existe no salta error como en remove"
+        "\nmiSet.clear()                vacia el set"
+        )
+
+    print("Con los set podemos hacer uniones")
+
+   #UNION
+    miSet= set1.union(set2)    #mantiene todos los elementos evitando duplicar datos
+    print (miSet)
+    miSet = set1 | set2        #Con | solo podemos unir sets entre sets no con otros data types 
+    set1.update(set2)          #se parece mucho a la union además evita duplicados
+
+    #INTERSECCION
+    miSet  = set4.intersection(set2)    #mantiene solo comunes
+    print(miSet)
+    mi_set = {1, 2} & {2, 3}            #con opderador, solo con sets
+    miSet.intersection_update(set3)     #mantiene el original sin crear nuevo set
+
+    #DIFERENCIA 
+    miSet = set4.difference(set5)       #mantiene solo los distintos
+    mi_set = {1, 2, 3} - {2}            #operador
+    
     mi_set = {1, 2} ^ {2, 3}        # {1, 3}
     
 
@@ -422,6 +446,8 @@ def main():
     #ordenarLista()
     #tuplas()
     losSets()
+
+    #cambio sin mas
 
     
 main()
