@@ -411,7 +411,7 @@ def losSets():
    #UNION
     miSet= set1.union(set2)    #mantiene todos los elementos evitando duplicar datos
     print (miSet)
-    miSet = set1 | set2        #Con | solo podemos unir sets entre sets no con otros data types 
+    miSet = set1 | set2        #Con | solo podemos unir sets entre sets no con otros data types
     set1.update(set2)          #se parece mucho a la union además evita duplicados
 
     #INTERSECCION
@@ -421,11 +421,47 @@ def losSets():
     miSet.intersection_update(set3)     #mantiene el original sin crear nuevo set
 
     #DIFERENCIA 
-    miSet = set4.difference(set5)       #mantiene solo los distintos
-    mi_set = {1, 2, 3} - {2}            #operador
-    
-    mi_set = {1, 2} ^ {2, 3}        # {1, 3}
-    
+    miSet = set4.difference(set5)       #mantiene los elementos del primer set que no estan en el primero
+    mi_set = {1, 2, 3} - {2}            #{1,3}
+    set4.difference_update(set5)        #con update tambien se puede
+
+    #DIFERENCIA SIMETRICA
+    miSet1 = {1,2,3,4,5,6}
+    miSet2 = {2,4,6,8,10}
+    diff = miSet1.symmetric_difference(miSet2)      #la diferencia simetrica mantiene los elementos no comunes entre los dos sets
+    print (f"set1 ={miSet1}\nset2 = {miSet2}\nDiferencia simétrica = {diff}")
+
+    mi_set = {1, 2} ^ {2, 3}        # {1, 3} tambien se puede con operador ^
+    miSet1.symmetric_difference_update(miSet2)#con update
+
+
+
+def losFrozenSets():
+
+    #DECLARACIÓN E INICIALIZACIÓN
+
+
+    #LOS FROZENSETS SON:
+        #DESORDENADOS, SIN DUPLICADOS, NO MODIFICABLES (INMUTABLES), NO INDEXADOS
+    miFrozenSet = frozenset(["hola","los","frozensets","van","con","corchetes"])    #normal con frozenset()
+    fs1 = frozenset([1, 2, 3, 4])  #constructor con lista
+    fs2 = frozenset((1, 2, 3))     #constructor con tupla
+    fs3 = frozenset("hola")        #constructor con str
+    fs4 = frozenset(range(5))      #constructor con range
+    fs5 = frozenset({x for x in range(10)}) #por comprension
+
+   
+    print("Metodos para FrozenSets:"
+    "\nmiFrozenSet.union(otroFrozenSet)           une dos frozen sets"
+    "\nmiFrozenSet.intersection(otroFrozenSet)     Mantiene solo los elementos comunes"
+    "\nmiFrozenSet.difference(otroFrozenSet)       Mantiene los elementos del primer set que no estan en el segundo"
+    "\nmiFrozenSet.symmetric_difference(otroFrozenSet)  Mantiene solo los elementos que no son comunes"
+    "\nmiFrozenSet.isdisjoint(otroFrozenSet)       Devuelve True si no hay elementos comunes entre los dos sets"
+    "\nmiFrozenSet.issubset(otroFrozenSet)         Devuelve True si es subconjunto del otro"
+    "\nmiFrozenSet.issuperset(otroFrozenSet)       Devuelve True si es superconjunto del otro"
+    "\nmiFrozenSet.copy()                         Devuelve una copia del frozenset"
+    )
+
 
 def main():
 
@@ -445,7 +481,8 @@ def main():
     #comprensionDeLista()
     #ordenarLista()
     #tuplas()
-    losSets()
+    #losSets()
+    losFrozenSets()
 
     
 main()
