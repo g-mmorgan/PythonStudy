@@ -81,6 +81,27 @@ def varGlobal():
     y = "Nueva variable y"
     print(y)
 
+def varNonlocal():
+    #NONLOCAL permite modificar una variable de la funcion envolvente (no global)
+    #Se usa en funciones anidadas
+
+    print("nonlocal se usa para modificar una variable de una funcion padre (envolvente), no la global")
+
+    def funcion_exterior():
+        x = "variable exterior"
+
+        def funcion_interior():
+            nonlocal x
+            x = "variable modificada"
+            print("Dentro de funcion_interior:", x)
+
+        print("Antes de llamar a funcion_interior:", x)
+        funcion_interior()
+        print("Despues de llamar a funcion_interior:", x)
+
+    funcion_exterior()
+
+
 def varNumericas():
 
     print("Los numero complejos usan j como la parte imaginaria")
@@ -262,6 +283,16 @@ def listas():
     "\nmiLista.remove(elemento)     borra elemento del lista"
     "\nmiLista.reverse()            invierte el orden de la lista"
     "\nmiLista.sort()               ordena de mayor a menor o alfabeticamente")
+
+
+    #DESEMPACAR LISTAS CON * (al llamar a funcion)
+    print("al llamar a una funcion usando *var desempaqueta la lista o tupla en argumentos de posicion\n")
+    numeros_lista = [4, 8, 1, 6, 9]
+    def suma(*num):
+        sum(num)
+    print(f"suma = {suma(*numeros_lista)}\n")
+
+
 
 
 
@@ -521,6 +552,17 @@ def losDictionaries():
     #COMPROBACION
     print("nombre" in miDiccionario)           #True si la clave existe
 
+        #DESEMPACAR DICCIONARIOS CON ** (al llamar a funcion)
+    print("Al llamar a una funcion usando **var desempaqueta el diccionario en argumentos key:value\n")
+
+    def presentar(nombre, edad, ciudad):
+        print(f"Nombre: {nombre}, Edad: {edad}, Ciudad: {ciudad}")
+
+    datos_dict = {"nombre": "Maria", "edad": 28, "ciudad": "Valencia"}
+    presentar(**datos_dict)
+    #presentar("nombre" = "Maria",...) es lo mismo
+
+
 def ifelse():
 
     r = random.randrange(1,10)
@@ -545,6 +587,141 @@ def ifelse():
         pass
         #se puede poner pass
     
+def switchenPy():
+    print("El switch de java en python es match")
+
+    r = random.randrange(1,10)
+    match r:
+        case 1:
+            print("random = 1")
+        case 2:
+            print("random = 2")
+        case 3:
+            print("random = 3")
+        case 4:
+            print("random = 4")
+        case 5:
+            print("random = 5")
+        case 6 | 7 : #podemos juntar casos
+            print("random = 6 o = 7")
+        case _: #caso base
+            print("_ es caso por defecto, osea r >5 ")
+
+def loops():
+
+    i = 0
+    print("En while podemos usar break para contar y continue para saltar, tambien podemos poner un else al while")
+
+    while i<10:
+        print(f"{i} < 10")
+
+        i += 1
+        if i < 5:
+            continue #salta todo el bucle y pasa la siguiente iteración
+
+        if i>5:
+            break #si salimos por break el else no se ejecuta
+
+    else: print("salimos del while") #siempre que salgamos por que deja de cumplirse la condición del while, 
+                                     #incluso si no se cumple desde un principio, con break no se hace el else
+
+def funcLambda():
+
+    print("Lambda es una funcion de una sola linea")
+ 
+
+    suma = lambda a, b: a + b
+    print(suma(3, 5))
+    print()
+
+    print("Uso comun con map y filter")
+    numeros = [1, 2, 3, 4, 5]
+    dobles = list(map(lambda x: x * 2, numeros))
+    pares = list(filter(lambda x: x % 2 == 0, numeros))
+    print("list(map(lambda x: x * 2, numeros)) ->", dobles)
+    print("list(filter(lambda x: x % 2 == 0, numeros)) ->", pares)
+    print()
+
+    #ejemplo con sorted
+    students = [("Emil", 25), ("Tobias", 22), ("Linus", 28)]
+    sorted_students = sorted(students, key=lambda x: x[1])
+    #ordenamos una lista por el segundo elemento
+    print(sorted_students)
+
+    print("\nSe puede usar para generar funciones\n")
+
+    def myfunc(n):
+        return lambda a: a * n
+
+    mydobler = myfunc(2)
+    #myfunc(2) devuelve el lambda con n = 2
+    #mydobler(11) mete al lambda en a el 11
+    print("mydobler(11) ->", mydobler(11))
+    print()
+
+def argumentosFunciones():
+    #*ARGS - permite pasar un numero variable de argumentos posicionales
+    #Se reciben como una tupla dentro de la funcion
+
+    print("* en parametros de funcion permite recibir numero variable de argumentos")
+
+    def maximo(*numeros):
+        if not numeros:
+            return None
+        max_num = numeros[0]
+        for num in numeros:
+            if num > max_num:
+                max_num = num
+        return max_num
+
+    print("** en parametros de funcion permite recibir numero variable de argumentos (clave=valor)")
+
+
+    def info_persona(**kwargs):
+        #kwargs pasa a ser un diccionario
+        for clave, valor in kwargs.items():
+            print(f"  {clave}: {valor}")
+
+    info_persona(nombre="Ana", edad=25, ciudad="Madrid\n")
+
+def generadores():
+
+    print("Generadores con funciones")
+
+    def generador():
+        print("Primera llamada a generador")
+        yield 1
+        print("segunda llamada a gen")
+        yield 2
+        print("tercera llamada a gen sin devolver nada")
+        yield 
+        print("cuarta llamada ")
+        yield 4
+        
+
+    #Yield detiene la funcion en es punto, yield tambien es un return 
+    #si atamos la funcion a una variable podemos ir avanzando con next
+    #si hacemos varias llamadas a la funcion no nos movemos entre yield solo reiniciamos
+     
+    g= generador()
+    print(next(g))
+    print(next(g))
+    next(g)
+    print(next(g))
+
+
+def rangos():
+    #range se puede usar con 3 argumentos de entrada
+        #1 argumento es el de parada y el incio por defecto 0 range(0) -> 1 ... 9
+        #2 arguementos
+
+    pass
+
+
+
+
+
+
 
 def main():
 
@@ -553,6 +730,7 @@ def main():
     #comenatarios()
     #variables()
     #varGlobal()
+    #varNonlocal()
     #varNumericas()
     #numRandom()
     #cadenas()
@@ -568,7 +746,10 @@ def main():
     #losFrozenSets()
     #losDictionaries()
     #ifelse()
-    
+    #loops()
+    #funcLambda()
+    #argumentosFunciones()
+    #generadores()
 
     
 main()
