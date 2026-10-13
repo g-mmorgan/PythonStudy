@@ -463,6 +463,89 @@ def losFrozenSets():
     )
 
 
+def losDictionaries():
+
+
+    #DECLARACIÓN E INICIALIZACIÓN
+
+
+    #LOS DICTIONARIES SON:
+        #DESORDENADOS (versiones previas a la 3.7), CON DUPLICADOS EN VALORES PERO NO EN CLAVES, MODIFICABLES, INDEXADOS POR CLAVE
+
+    miDiccionario = {"nombre": "Juan", "edad": 30, "ciudad": "Madrid"}    #normal con llaves
+    dict1 = dict(nombre="Ana", edad=25)          #constructor con kwargs
+    dict2 = dict([("a", 1), ("b", 2)])          #constructor con lista de tuplas
+    dict3 = dict(zip(["x", "y"], [10, 20]))     #constructor con zip
+    dict4 = {x: x**2 for x in range(5)}        #por comprension
+
+
+    print("Metodos para Dictionaries:"
+        "\nmiDiccionario.keys()                    devuelve todas las claves"
+        "\nmiDiccionario.values()                  devuelve todos los valores"
+        "\nmiDiccionario.items()                   devuelve todos los pares clave-valor"
+        "\nmiDiccionario.get('clave')              devuelve el valor de la clave (None si no existe)"
+        "\nmiDiccionario.pop('clave')              elimina la clave y devuelve su valor"
+        "\nmiDiccionario.popitem()                 elimina y devuelve el ultimo par insertado"
+        "\nmiDiccionario.update(otroDict)          añade o actualiza pares desde otro diccionario"
+        "\nmiDiccionario.setdefault('clave', val)  devuelve el valor de la clave; si no existe, la crea con val"
+        "\nmiDiccionario.copy()                    devuelve una copia superficial del diccionario"
+        "\nmiDiccionario.clear()                   vacia el diccionario"
+        )
+
+    #ACCESO
+    print(miDiccionario["nombre"])              #acceso por clave directo
+    print(miDiccionario.get("edad"))            #acceso seguro con get (no error si no existe)
+    print(miDiccionario.get("telefono", "No existe"))   #get con valor, si el valor existe lo devuelve si no existe devuelve lo pasado al get "No existe"
+
+    #AÑADIR / MODIFICAR
+    miDiccionario["telefono"] = "612345678"    #añadir nueva clave
+    miDiccionario["edad"] = 31                 #modificar valor existente
+    miDiccionario.update({"profesion": "Ingeniero", "ciudad": "Barcelona"})  #update multiple
+
+    #ELIMINAR
+    valor = miDiccionario.pop("telefono")      #elimina y devuelve el valor
+    print(f"Eliminado: {valor}")
+    miDiccionario.popitem()                    #elimina el ultimo par clave-valor insertado
+    del miDiccionario["profesion"]            #elimina por clave con del
+
+    #ITERACION
+    for clave in miDiccionario:
+        print(clave, miDiccionario[clave])     #iterar sobre claves
+
+    for clave, valor in miDiccionario.items(): #iterar sobre pares clave-valor
+        print(f"{clave}: {valor}")
+
+    print("Claves:", miDiccionario.keys())      #ver solo claves
+    print("Valores:", miDiccionario.values())   #ver solo valores
+
+    #COMPROBACION
+    print("nombre" in miDiccionario)           #True si la clave existe
+
+def ifelse():
+
+    r = random.randrange(1,10)
+
+    print("El if else:")
+
+    if r%2==0 :
+        print("String vacios \"\", 0 , None y colecciones vacias se evaluan como False")
+    else:
+        print("Los strings no vacios \"False\", los numeros distintos de 0, -5 o 3 son considerados True")
+
+    if r <2:
+        print("Vamos a encadenar varios elif")
+    elif r<5:
+        print("r < 5")
+    elif r<8:
+        print("r<8")
+    else:   
+        print("r>=8")
+
+    if r == 10:
+        pass
+        #se puede poner pass
+    
+
 def main():
 
     print("Main:\n")
@@ -482,7 +565,10 @@ def main():
     #ordenarLista()
     #tuplas()
     #losSets()
-    losFrozenSets()
+    #losFrozenSets()
+    #losDictionaries()
+    #ifelse()
+    
 
     
 main()
