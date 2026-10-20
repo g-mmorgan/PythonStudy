@@ -711,14 +711,17 @@ def generadores():
 
 
 def rangos():
-    #range se puede usar con 3 argumentos de entrada
-        #1 argumento es el de parada y el incio por defecto 0 range(0) -> 1 ... 9
-        #2 arguementos
+    #range se puede usar con 3 argumentos de entrada range (start, stop, step)
+        #range(10); 10 = stop, start = 0 por defecto, step = 1 por defecto
+        #range (3,10); start = 3, stop = 10, step = 1 por defecto
+        #range (3,10,3); start = 3, stop = 10, step = 3 -> 
+    lista = list(range(3,10,3))
+    print(f"Lista con range(3,10,3): {lista}")
 
+
+def iteradores():
+    
     pass
-
-
-
 
 
 
@@ -750,6 +753,6 @@ def main():
     #funcLambda()
     #argumentosFunciones()
     #generadores()
-
+    rangos()
     
 main()
